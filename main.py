@@ -51,7 +51,6 @@ class pyLog(Gtk.Window):
         headerbar.set_show_close_button(True)
         headerbar.props.title = "pyLog"
         self.set_titlebar(headerbar)
-
         # Layout main GUI
         notebook = Gtk.Notebook()
         self.add(notebook)
@@ -59,12 +58,14 @@ class pyLog(Gtk.Window):
         # viewEntry page
         pageViewEntry = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=6)
         # Liststore for treeview
+        scrollable = Gtk.ScrolledWindow()
         self.listStore = Gtk.ListStore(str, str)
         self.updateListStore(None)
         # get selectedRowselection
         self.selectedRow = self.treeview.get_selection()
         self.selectedRow.connect("changed", self.item_selected)
-        pageViewEntry.add(self.treeview)
+        scrollable.add(self.treeview)
+        pageViewEntry.add(scrollable)
         self.viewEntryButton = Gtk.Button("View Entry")
         self.viewEntryButton.connect("clicked", self.viewEntry)
         pageViewEntry.add(self.viewEntryButton)
@@ -72,7 +73,6 @@ class pyLog(Gtk.Window):
 
         # newEntry page
         pageNewEntry = Gtk.Box(orientation=Gtk.Orientation.VERTICAL)
-
         #Title Entry
         hbox1 = Gtk.Box(border_width=10)
         self.titleEntry = Gtk.Entry()
