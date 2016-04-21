@@ -144,7 +144,6 @@ class pyLog(Gtk.Window):
 
     #Button Post
     def postEntry(self, widget):
-        print("Post Entry")
         key = time.strftime("%Y%m%d%H%M%S")
         a = self.titleEntry.get_text()
         postBuffer = self.contentEntry.get_buffer()
@@ -158,7 +157,6 @@ class pyLog(Gtk.Window):
 
     #Button Clear
     def clearEntry(self, widget):
-        print("Clear Entry")
         self.titleEntry.set_text("")
         textBuffer = self.contentEntry.get_buffer()
         textBuffer.set_text("")
